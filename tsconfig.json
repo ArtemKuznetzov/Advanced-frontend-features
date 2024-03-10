@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    // noImplicitAny не позволяет использовать переменные без явного указания типа. Сам any использовать можно
+    "noImplicitAny": true,
+    "module": "es6",
+    // в target указываем версию стандарта, в которую код будет компилироваться. Нужно для того, чтобы
+    // большинство браузеров могло поддерживать наш код
+    "target": "es5",
+    "jsx": "react",
+    // allowJs позволяет компилятору обрабатывать не только ts файлы, но и js
+    "allowJs": true,
+    // moduleResolution определяет то, какие импорты будут. Бывают node и classic. В 99 процентах node
+    "moduleResolution": "node",
+    // esModuleInterpop позволяет работать с пакетами, которые используют common.js
+    // как с обычными пакетвами с помощью (import require() module.exports) - common.js. Т.е. флаг позволяет
+    // использовать обычные импорты и экспорты вместо common.js с его require
+    "esModuleInterop": true,
+    // многие библиотеки node.js не поддерживают дефолтный импорт. Этот флаг позволяет использовать обычные импорты без *
+    // даже если у пакеты, который мы используем нет дефолтного импорта
+    "allowSyntheticDefaultImports": true,
+    // настройка нужна, потому что ts-node по умолчанию не поддерживает ничего, кроме commonJs
+    "ts-node": {
+      "compilerOptions": {
+        "module": "CommonJS"
+      }
+    }
+  }
+}
