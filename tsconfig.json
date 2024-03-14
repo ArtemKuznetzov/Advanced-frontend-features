@@ -17,6 +17,10 @@
     // moduleResolution определяет то, какие импорты будут. Бывают node и classic. В 99 процентах node
     "moduleResolution": "node",
     "baseUrl": ".",
+    // paths необходим, чтобы задавать абсолютные импорты. из какой точки их следует делать
+    "paths": {
+      "*": ["./src/*"]
+    },
     // esModuleInterpop позволяет работать с пакетами, которые используют common.js
     // как с обычными пакетвами с помощью (import require() module.exports) - common.js. Т.е. флаг позволяет
     // использовать обычные импорты и экспорты вместо common.js с его require
