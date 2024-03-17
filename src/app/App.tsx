@@ -7,15 +7,18 @@ import {AboutPage} from "pages/AboutPage";
 import {MainPage} from "pages/MainPage";
 import AppRouter from "app/providers/router";
 import {Navbar} from "widgets/Navbar";
+import Sidebar from "widgets/Sidebar";
 
 const App = () => {
-    const {theme, toggleTheme} = useTheme()
+    const {theme} = useTheme()
 
     return (
         <div className={classNames('app', {}, [theme])}>
             <Navbar/>
-            <AppRouter/>
-
+            <div className='content-page'>
+                <Sidebar />
+                <AppRouter/>
+            </div>
         </div>
     );
 };
