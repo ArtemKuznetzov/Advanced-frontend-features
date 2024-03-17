@@ -30,6 +30,7 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
         // позволяет обновить приложение после изменений в коде и при этом не перезагружать страницу. однако
         // этот плагин не очень хорошо работает с реакт компонентами (???). Поэтому можно использовать
         // ReactRefreshWebpackPlugin
+        // не забыть в devServer прописать hot: true
         new webpack.HotModuleReplacementPlugin()
     ]
 }
