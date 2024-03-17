@@ -26,6 +26,10 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
         new webpack.DefinePlugin({
             // глобальные переменные сборки рекомендуют обозначать с помощью __
             __IS_DEV__: JSON.stringify(isDev)
-        })
+        }),
+        // позволяет обновить приложение после изменений в коде и при этом не перезагружать страницу. однако
+        // этот плагин не очень хорошо работает с реакт компонентами (???). Поэтому можно использовать
+        // ReactRefreshWebpackPlugin
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
