@@ -4,7 +4,7 @@ import {BuildOptions} from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 
-export function buildPlugins({paths}: BuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPluginInstance[] {
     return [
         new HtmlWebpackPlugin({
             // template позволяет использовать файл как шаблон, чтобы в него встраивались скрипты
@@ -21,6 +21,11 @@ export function buildPlugins({paths}: BuildOptions): webpack.WebpackPluginInstan
         new MiniCssExtractPlugin({
             filename: 'css/[name].[contenthash:8].css',
             chunkFilename: 'css/[name].[contenthash:8].css'
+        }),
+        // с помощью DefinePlugin появляется возможность прокидывать глобальные переменные в само приложение
+        new webpack.DefinePlugin({
+            // глобальные переменные сборки рекомендуют обозначать с помощью __
+            __IS_DEV__: JSON.stringify(isDev)
         })
     ]
 }
