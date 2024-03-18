@@ -1,6 +1,7 @@
-import {ResolveOptions} from 'webpack'
-import {BuildOptions} from "./types/config";
-export function buildResolvers({paths}: BuildOptions): ResolveOptions {
+import { ResolveOptions } from 'webpack';
+import { BuildOptions } from './types/config';
+
+export function buildResolvers({ paths }: BuildOptions): ResolveOptions {
     return {
         // Нужно для того, чтобы при импорте не указывать расширение файла, а только его название
         extensions: ['.tsx', '.ts', '.js'],
@@ -13,6 +14,6 @@ export function buildResolvers({paths}: BuildOptions): ResolveOptions {
         mainFiles: ['index'],
         // для абсолютных импортов можно так же использовать alies (@), но с помощью {} в alias мы можем обращаться
         // к абсолютным импортам напрямую
-        alias: {}
-    }
+        alias: {},
+    };
 }
