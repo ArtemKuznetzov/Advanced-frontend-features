@@ -2,6 +2,7 @@ module.exports = {
     env: {
         browser: true,
         es2021: true,
+        jest: true,
     },
     extends: [
         'plugin:react/recommended',
@@ -61,7 +62,7 @@ module.exports = {
         'no-restricted-exports': 'off',
         'no-trailing-spaces': 'off',
         // допустимая длина комментария. для себя :)
-        'max-len': ['error', 150],
+        'max-len': ['error', { ignoreComments: true }],
         'spaced-comment': [0],
         // настройка необходима, чтобы плагин, который ругается на отсутствие перевода, ругался на него только в
         // jsx разметке
