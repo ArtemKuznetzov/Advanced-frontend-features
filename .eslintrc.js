@@ -6,6 +6,7 @@ module.exports = {
     extends: [
         'plugin:react/recommended',
         'airbnb',
+        'plugin:i18next/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -18,6 +19,7 @@ module.exports = {
     plugins: [
         'react',
         '@typescript-eslint',
+        'i18next',
     ],
     // В качестве названия ключа для правила выступает его название из документации
     // 1 - warning
@@ -61,6 +63,9 @@ module.exports = {
         // допустимая длина комментария. для себя :)
         'max-len': ['error', 150],
         'spaced-comment': [0],
+        // настройка необходима, чтобы плагин, который ругается на отсутствие перевода, ругался на него только в
+        // jsx разметке
+        'i18next/no-literal-string': ['error', { markupOnly: true }],
     },
     globals: {
         __IS_DEV__: true,
