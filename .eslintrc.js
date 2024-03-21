@@ -62,11 +62,14 @@ module.exports = {
         'no-restricted-exports': 'off',
         'no-trailing-spaces': 'off',
         // допустимая длина комментария. для себя :)
-        'max-len': ['error', { ignoreComments: true }],
+        'max-len': [2, {
+            code: 120, tabWidth: 4, ignoreUrls: true, ignoreComments: true, 
+        }],
         'spaced-comment': [0],
         // настройка необходима, чтобы плагин, который ругается на отсутствие перевода, ругался на него только в
         // jsx разметке
-        'i18next/no-literal-string': ['error', { markupOnly: true }],
+        // 'i18next/no-literal-string': ['error', { markupOnly: true }],
+        'i18next/no-literal-string': 'off',
     },
     globals: {
         __IS_DEV__: true,
