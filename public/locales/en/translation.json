@@ -4,5 +4,8 @@
   "Язык": "English",
   "Переключить": "Toggle",
   "Загрузка": "Loading...",
-  "Страница не найдена": "Page not found"
+  "Страница не найдена": "Page not found",
+  "Произошла непредвиденная ошибка": "Unexpected error happens",
+  "Обновить страницу": "Reload page",
+  "Вызвать ошибку": "Init error"
 }

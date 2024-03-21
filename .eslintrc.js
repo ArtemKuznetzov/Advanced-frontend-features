@@ -70,6 +70,7 @@ module.exports = {
         // jsx разметке
         // 'i18next/no-literal-string': ['error', { markupOnly: true }],
         'i18next/no-literal-string': 'off',
+        'react/no-unused-prop-types': 1,
     },
     globals: {
         __IS_DEV__: true,
