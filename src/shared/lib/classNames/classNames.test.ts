@@ -1,7 +1,8 @@
 // стоит предварительно установить пакет с типами для jest
 // также стоит иметь ввиду, что по умолчанию jest не умеет работать с абсолютными имортами,
 // ничего не знает про TS. Для этого нужно установить babel preset для TS
-import { classNames } from './classNames';
+
+import { classNames } from 'shared/lib/classNames/classNames';
 
 describe('classNames', () => {
     test('with only first param', () => {

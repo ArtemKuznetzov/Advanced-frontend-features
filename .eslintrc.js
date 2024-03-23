@@ -52,6 +52,7 @@ module.exports = {
         'react/function-component-definition': 'off',
         // ??? ошибка has been declare. Ругалось на enum
         'no-shadow': 'off',
+        
         // правило отключает проверку с указанием расширения файла при импорте
         'import/extensions': 'off',
         // ошибка возникающая при импорте вебпака.
@@ -68,11 +69,18 @@ module.exports = {
         'spaced-comment': [0],
         // настройка необходима, чтобы плагин, который ругается на отсутствие перевода, ругался на него только в
         // jsx разметке
-        // 'i18next/no-literal-string': ['error', { markupOnly: true }],
-        'i18next/no-literal-string': 'off',
+        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] }],
+        // 'i18next/no-literal-string': 'off',
         'react/no-unused-prop-types': 1,
     },
     globals: {
         __IS_DEV__: true,
     },
+    // Позволяет для определенного типа файлов переопределить какие-то правила
+    overrides: [{
+        files: ['**/src/**/*.test.{ts,tsx}'],
+        rules: {
+            'i18next/no-literal-string': 'off',
+        },
+    }],
 };
