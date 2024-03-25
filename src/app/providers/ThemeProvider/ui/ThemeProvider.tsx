@@ -5,7 +5,7 @@ const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || T
 
 const ThemeProvider: FC = ({ children }) => {
     const [theme, setTheme] = useState(defaultTheme);
-
+    
     // useMemo т.к. на каждый рендер компонент будет создаваться новый объект (инициализироваться заново)
     // объект каждый раз будет новым, ссылка на него будет новой
     const defaultProps = useMemo(() => ({ theme, setTheme }), [theme]);

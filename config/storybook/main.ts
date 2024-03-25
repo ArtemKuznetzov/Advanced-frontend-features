@@ -1,4 +1,6 @@
+/* eslint-disable no-param-reassign */
 import type { StorybookConfig } from '@storybook/react-webpack5';
+import webpack from 'webpack';
 
 const config: StorybookConfig = {
     stories: [
@@ -31,6 +33,25 @@ const config: StorybookConfig = {
     }),
     docs: {
         autodocs: 'tag',
+    },
+    webpackFinal: async (config) => {
+        config.module = config.module || {};
+        config.module.rules = config.module.rules || [];
+
+        // This modifies the existing image rule to exclude .svg files
+        // since you want to handle those files with @svgr/webpack
+        const imageRule = config.module.rules.find((rule: {test: RegExp}) => rule?.test?.test('.svg'));
+        if (imageRule && typeof imageRule === 'object') {
+            imageRule.exclude = /\.svg$/;
+        }
+
+        // Configure .svg files to be loaded with @svgr/webpack
+        config.module.rules.push({
+            test: /\.svg$/,
+            use: ['@svgr/webpack'],
+        });
+
+        return config;
     },
 };
 export default config;

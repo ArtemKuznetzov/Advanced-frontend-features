@@ -3,6 +3,7 @@ import Button, { ThemeButton } from './Button';
 
 const meta: Meta<typeof Button> = {
     component: Button,
+    title: 'shared/Button',
     // decorators: [
     //     (Story) => (
     //         <div style={{ margin: '3em' }}>
