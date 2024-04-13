@@ -5,7 +5,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
-    return [
+    const plugins = [
         new HtmlWebpackPlugin({
             // template позволяет использовать файл как шаблон, чтобы в него встраивались скрипты
             // без этого шаблона, в файле билда, в index.html не был виден div className='root
@@ -31,10 +31,19 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
         // этот плагин не очень хорошо работает с реакт компонентами (???). Поэтому можно использовать
         // ReactRefreshWebpackPlugin
         // не забыть в devServer прописать hot: true
-        new webpack.HotModuleReplacementPlugin(),
-        new BundleAnalyzerPlugin({
-            // чтобы анализ бандла не появлялся каждый раз при запуске
-            openAnalyzer: false,
-        }),
+        // new webpack.HotModuleReplacementPlugin(),
+        // new BundleAnalyzerPlugin({
+        //     // чтобы анализ бандла не появлялся каждый раз при запуске
+        //     openAnalyzer: false,
+        // }),
     ];
+
+    if (isDev) {
+        plugins.push(new webpack.HotModuleReplacementPlugin());
+        plugins.push(new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+        }));
+    }
+
+    return plugins;
 }
