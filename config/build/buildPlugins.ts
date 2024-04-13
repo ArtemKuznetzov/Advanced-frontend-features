@@ -41,7 +41,5 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
         }));
     }
 
-    console.log(plugins);
-
     return plugins;
 }
