@@ -30,21 +30,18 @@ export function buildPlugins({ paths, isDev }: BuildOptions): webpack.WebpackPlu
         // позволяет обновить приложение после изменений в коде и при этом не перезагружать страницу. однако
         // этот плагин не очень хорошо работает с реакт компонентами (???). Поэтому можно использовать
         // ReactRefreshWebpackPlugin
-        // не забыть в devServer прописать hot: true
-        // new webpack.HotModuleReplacementPlugin(),
-        // new BundleAnalyzerPlugin({
-        //     // чтобы анализ бандла не появлялся каждый раз при запуске
-        //     openAnalyzer: false,
-        // }),
     ];
 
     if (isDev) {
-        console.log('check', plugins);
+        // не забыть в devServer прописать hot: true
         plugins.push(new webpack.HotModuleReplacementPlugin());
         plugins.push(new BundleAnalyzerPlugin({
+            // чтобы анализ бандла не появлялся каждый раз при запуске
             openAnalyzer: false,
         }));
     }
+
+    console.log(plugins);
 
     return plugins;
 }
