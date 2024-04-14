@@ -1,20 +1,20 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { withTranslation } from 'react-i18next';
+import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 import Sidebar from './Sidebar';
-import { renderWithTranslation } from '../../../../shared/lib/tests/renderWithTranslation/renderWithTranslation';
 
 describe('Sidebar', () => {
     test('Render Sidebar', () => {
         // const SidebarWithTranslation = withTranslation()(Sidebar);
         // render(<SidebarWithTranslation />);
-        // renderWithTranslation оборачивает тестируемый компонент в обертку и сразу добавляет нужную
+        // componentRender оборачивает тестируемый компонент в обертку и сразу добавляет нужную
         // конфигурацию для переводов
-        renderWithTranslation(<Sidebar />);
+        componentRender(<Sidebar />);
         expect(screen.getByTestId('sidebar')).toBeInTheDocument();
     });
 
     test('toggle Sidebar', () => {
-        renderWithTranslation(<Sidebar />);
+        componentRender(<Sidebar />);
         const toggleBtn = screen.getByTestId('sidebar-toggle');
         expect(screen.getByTestId('sidebar')).toBeInTheDocument();
         // fireEvent - имитация/генерация каких-то событий

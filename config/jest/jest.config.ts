@@ -48,7 +48,7 @@ export default {
     // HOC withTranslation()(Component)
     // Будет предупреждение о том, что мы не прокинули instance i18n в компонент. Доступа к нему нет, т.к. он импортирован
     // в index.tsx, а рендерим при тестировании изолированный компонент
-    // Для этого был создан кастомный компонент renderWithTranslation с специальным конфигом i18nForTests
+    // Для этого был создан кастомный компонент componentRender с специальным конфигом i18nForTests
     setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
